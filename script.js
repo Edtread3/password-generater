@@ -3,7 +3,11 @@ var generateBtn = document.querySelector("#generate");
 var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var upperCase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var numeric = ['0','1','2','3','4','5','6','7','8','9'];
-var specialChar = ['@','#','!','%','$','&','/'];
+var specialChar = ['@','#','!','%','$','&','/','*'];
+
+
+// adds event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
@@ -13,9 +17,11 @@ function writePassword() {
   
   passwordText.value = password;
 }
+ 
 
-function generatePassword(){
-
+function generatePassword() {
+  
+  
    var userOptions = [];
  // console.log(userOptions) //here is full array
   
@@ -44,6 +50,10 @@ function generatePassword(){
         userOptions = userOptions.concat(specialChar);
         console.log(userOptions)
     }
+    else {
+      alert("Sorry but atleast one character type has to be chosen!"); //Alerts user if not one character type is chosen
+      return "Please Try Again"
+    }
     var password = []
     for (var i = 0; i < userChoice; i++) {
       var randomNumber = Math.floor(Math.random() * userOptions.length)
@@ -53,13 +63,10 @@ function generatePassword(){
     // adding new variable to password that will turn my password array into one string
     var stringPassword = password.join('')
     console.log(password)
-    // 
-     return stringPassword 
-    
-    }  
-        
-      //return "Password" //what got returned
+    return stringPassword
+  
+}
+  
+  
+  
 
-
- //Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
